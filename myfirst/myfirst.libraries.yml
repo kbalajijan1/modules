@@ -1,0 +1,8 @@
+cleditor:
+  remote: http://premiumsoftware.net/cleditor
+  version: 1.4.5
+  js:
+    /libraries/cleditor/js/jquery.cleditor.min.js: {preprocess: false}
+  css:
+    /libraries/cleditor/css/jquery.cleditor.css: {}
+

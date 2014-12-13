@@ -1,0 +1,6 @@
+myfirst.firstpagedesc:
+  path: '/firstpage'
+  defaults:
+    _content: '\Drupal\myfirst\Controller\FirstPageController::firstPage'
+  requirements:
+    _permission: 'access myfirst'    
