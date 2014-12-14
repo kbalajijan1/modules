@@ -31,20 +31,21 @@ class FirstPageController extends ControllerBase {
     _drupal_add_js(drupal_get_path('module', 'myfirst') . '/cleditor/js/jquery.cleditor.min.js');
     _drupal_add_js(drupal_get_path('module', 'myfirst') . '/js/myfirst.js');    
     
-    $form['textarea'] = array(
-      '#markup' => '<textarea id="text-editor">Hello world</textarea>',
-    );
-//    $form['drop_cnt'] = array(
-//      '#markup' => '<div id="drop-target" style="width:30%; height:200px;border:1px solid red" id="text-editor">Hello world</div>',
-//    ); 
     $form['drop_cnt'] = array(
-      '#markup' => '<div class="inner-html"></div>',
+      '#markup' => '<div id="text-editor">',
+    ); 
+    $form['drop_cnt_inner'] = array(
+      '#markup' => '<div style="width:300px; height:150px; border: 1px solid red"><div class="drop-target no-cnt" style="height:10px"></div>'
+      . '<div>Hello world</div>'
+      . '<div class="drop-target no-cnt" style="height:10px"></div></div>',
     );     
     $form['draggable_div'] = array(
       '#markup' => '<div draggable="true" id="drag-cnt">Text</div>'
     );    
-    
-    return $form;
+    $form[''] = array(
+       '#markup' => '',
+    );
+     return $form;
   }
 
 }

@@ -5,73 +5,86 @@
  */
 
 (function ($) {
-  alert('works3');
-  $(function() {
+  alert('works4');
+  $(function () {
     $('#text-editor').click(function () {
       $("#text-editor").cleditor({
       });
     });
 
 // Get the div element that will serve as the drop target.
-var dropZoneOne = document.querySelector('.drop-target');
+    var dropZoneOne = document.querySelectorAll('.drop-target');
 
 // Get the draggable elements.
-var dragElements = document.querySelectorAll('#drag-cnt');
+    var dragElements = document.querySelectorAll('#drag-cnt');
 
 // Track the element that is being dragged.
-var elementDragged = null;
+    var elementDragged = null;
 
-console.log(dropZoneOne);
+    console.log(dropZoneOne);
 /////////////////////////////
 
-for (var i = 0; i < dragElements.length; i++) {
+    for (var i = 0; i < dragElements.length; i++) {
 
-  // Event Listener for when the drag interaction starts.
-  dragElements[i].addEventListener('dragstart', function(e) {
-    console.log('drag works');
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text', '<div>element dragged</div>');
-    elementDragged = this;
-  });
+      // Event Listener for when the drag interaction starts.
+      dragElements[i].addEventListener('dragstart', function (e) {
+        console.log('drag works');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text', '<div>element dragged</div>');
+        elementDragged = this;
+      });
 
-  // Event Listener for when the drag interaction finishes.
-  dragElements[i].addEventListener('dragend', function(e) {
-    elementDragged = null;
-  });
+      // Event Listener for when the drag interaction finishes.
+      dragElements[i].addEventListener('dragend', function (e) {
+        elementDragged = null;
+      });
 
-};
+    };
+
+      $('.drop-target').on('dragover', function (e) {
+        console.log('dragover works');
+        if (e.preventDefault) {
+          e.preventDefault();
+        }
+        e.dataTransfer.dropEffect = 'move';
+
+        return false;
+      });    
 //////////////////////////////////////
-dropZoneOne.addEventListener('dragover', function(e) {
-  console.log('dragover works');
-  if (e.preventDefault) {
-    e.preventDefault();
-  }
-
-  e.dataTransfer.dropEffect = 'move';
-
-  return false;
-});
-// Event Listener for when the dragged element enters the drop zone.
-dropZoneOne.addEventListener('dragenter', function(e) {
-  console.log('dragenter works');
-  this.className = "over";
-});
-
-// Event Listener for when the dragged element leaves the drop zone.
-dropZoneOne.addEventListener('dragleave', function(e) {
-  console.log('dragleave works');
-  this.className = "";
-});
-dropZoneOne.addEventListener('drop', function(e) {
-  console.log('drop works');
-  if (e.preventDefault) e.preventDefault(); 
-  if (e.stopPropagation) e.stopPropagation();
-
-  this.className = "";
-  this.innerHTML = e.dataTransfer.getData('text');
-
-  return false;
-});
-$('#').html('<div class="drop-target" style="width:30%; height:200px;border:1px solid red" id="text-editor">Hello world</div>');
-  });    
+//    for (var i = 0; i < dropZoneOne.length; i++) {
+//      dropZoneOne[i].addEventListener('dragover', function (e) {
+//        console.log('dragover works');
+//        if (e.preventDefault) {
+//          e.preventDefault();
+//        }
+//        e.dataTransfer.dropEffect = 'move';
+//
+//        return false;
+//      });
+//// Event Listener for when the dragged element enters the drop zone.
+//      dropZoneOne[i].addEventListener('dragenter', function (e) {
+//        console.log('dragenter works');
+//        this.className = "over";
+//        $(this).html('Drop Here');
+//      });
+//
+//// Event Listener for when the dragged element leaves the drop zone.
+//      dropZoneOne[i].addEventListener('dragleave', function (e) {
+//        console.log('dragleave works');
+//        this.className = "";
+//        $(this).html('');
+//      });
+//      dropZoneOne[i].addEventListener('drop', function (e) {
+//        console.log('drop works');
+//        if (e.preventDefault)
+//          e.preventDefault();
+//        if (e.stopPropagation)
+//          e.stopPropagation();
+//
+//        this.className = "";
+//        this.innerHTML = '<div class="drop-target no-cnt"></div><div>New Content</div><div class="drop-target no-cnt"></div>';
+//        return false;
+//      });
+//    }
+  });
 })(jQuery);
