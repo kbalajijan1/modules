@@ -5,7 +5,6 @@
  */
 
 (function ($) {
-  alert('works4');
   $(function () {
     $('#text-editor').click(function () {
       $("#text-editor").cleditor({
@@ -40,51 +39,41 @@
       });
 
     };
-
-      $('.drop-target').on('dragover', function (e) {
+//////////////////////////////////////
+      $('.path-firstpage').on('dragover', '.drop-target', function (e) {
         console.log('dragover works');
         if (e.preventDefault) {
           e.preventDefault();
         }
-        e.dataTransfer.dropEffect = 'move';
 
         return false;
-      });    
-//////////////////////////////////////
-//    for (var i = 0; i < dropZoneOne.length; i++) {
-//      dropZoneOne[i].addEventListener('dragover', function (e) {
-//        console.log('dragover works');
-//        if (e.preventDefault) {
-//          e.preventDefault();
-//        }
-//        e.dataTransfer.dropEffect = 'move';
-//
-//        return false;
-//      });
-//// Event Listener for when the dragged element enters the drop zone.
-//      dropZoneOne[i].addEventListener('dragenter', function (e) {
-//        console.log('dragenter works');
-//        this.className = "over";
-//        $(this).html('Drop Here');
-//      });
-//
-//// Event Listener for when the dragged element leaves the drop zone.
-//      dropZoneOne[i].addEventListener('dragleave', function (e) {
-//        console.log('dragleave works');
-//        this.className = "";
-//        $(this).html('');
-//      });
-//      dropZoneOne[i].addEventListener('drop', function (e) {
-//        console.log('drop works');
-//        if (e.preventDefault)
-//          e.preventDefault();
-//        if (e.stopPropagation)
-//          e.stopPropagation();
-//
-//        this.className = "";
-//        this.innerHTML = '<div class="drop-target no-cnt"></div><div>New Content</div><div class="drop-target no-cnt"></div>';
-//        return false;
-//      });
-//    }
+      });
+// Event Listener for when the dragged element enters the drop zone.
+      $('.path-firstpage').on('dragenter', '.drop-target', function (e) {
+        console.log('dragenter works');
+        $(this).html('Drop Here');
+      });
+
+// Event Listener for when the dragged element leaves the drop zone.
+      $('.path-firstpage').on('dragleave', '.drop-target', function (e) {
+        console.log('dragleave works');
+        $(this).html('');
+      });
+      $('.path-firstpage').on('drop', '.drop-target', function (e) {  
+        console.log('drop works');
+        if (e.preventDefault)
+          e.preventDefault();
+        if (e.stopPropagation)
+          e.stopPropagation();
+        this.innerHTML = '<div class="drop-target no-cnt" style="height:10px"></div><div>New Content</div><div class="drop-target no-cnt" style="height:10px"></div>';
+        $(this).removeClass('drop-target');
+        return false;
+      });
+$('.path-firstpage').on('click', '.click-test', function (e) {
+  alert('works');
+});
+$('.addclick').click(function(){
+  $('.click-cnt').append('<div class="click-test">click</div>');
+});
   });
 })(jQuery);

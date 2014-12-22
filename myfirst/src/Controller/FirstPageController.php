@@ -29,21 +29,23 @@ class FirstPageController extends ControllerBase {
 //      );
     _drupal_add_css(drupal_get_path('module', 'myfirst') . '/cleditor/css/jquery.cleditor.css');
     _drupal_add_js(drupal_get_path('module', 'myfirst') . '/cleditor/js/jquery.cleditor.min.js');
-    _drupal_add_js(drupal_get_path('module', 'myfirst') . '/js/myfirst.js');    
+    //_drupal_add_js(drupal_get_path('module', 'myfirst') . '/js/myfirst.js');    
     
     $form['drop_cnt'] = array(
-      '#markup' => '<div id="text-editor">',
+      '#markup' => '<script src="'. drupal_get_path('module', 'myfirst') . '/js/myfirst.js' .'"></script><div id="text-editor">',
     ); 
     $form['drop_cnt_inner'] = array(
       '#markup' => '<div style="width:300px; height:150px; border: 1px solid red"><div class="drop-target no-cnt" style="height:10px"></div>'
-      . '<div>Hello world</div>'
+      . '<div>Drop content</div>'
       . '<div class="drop-target no-cnt" style="height:10px"></div></div>',
     );     
     $form['draggable_div'] = array(
       '#markup' => '<div draggable="true" id="drag-cnt">Text</div>'
     );    
-    $form[''] = array(
-       '#markup' => '',
+    $form['click_test'] = array(
+       '#markup' => '<div class="click-cnt">
+      <div class="click-test">click</div>
+      </div><div class="addclick">Add Click</div>',
     );
      return $form;
   }
